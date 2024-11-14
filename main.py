@@ -56,7 +56,7 @@ def registrasi():
         tanggal_lahir = request.form['tanggal_lahir']
         asal_sekolah = request.form['asal_sekolah']
         prodi = request.form['prodi']
-        foto = request.form['foto']
+        foto = request.files['foto']
         if foto:
             timestamp = str(int(time.time()))
             ext = foto.filename.split('.')[-1]

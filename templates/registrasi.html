@@ -5,7 +5,7 @@
 {%if pesan_konfirmasi%}
     <div class="alert alert-success">{{ pesan_konfirmasi}}
         {%if foto%}
-        <img src="{{ url_for('static', filename=foto.split('static/')[-1])}}" alt="Foto Mahasiswa", width="150",class="img-thumbnail"/>
+       <br /> <img src="{{ url_for('static', filename=foto.split('static/')[-1])}}" alt="Foto Mahasiswa", width="150",class="img-thumbnail"/>
         {%endif%}
         <ul>
             <li>Nisn: {{ nisn }}</li>
