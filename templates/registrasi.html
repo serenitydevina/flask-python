@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% block title %}Registrasi{% endblock %}
+{% block content %}
+<h1>Registrasi Mahasiswa</h1>
+{%if pesan_konfirmasi%}
+    <div class="alert alert-success">{{ pesan_konfirmasi}}
+        {%if foto%}
+        <img src="{{ url_for('static', filename=foto.split('static/')[-1])}}" alt="Foto Mahasiswa", width="150",class="img-thumbnail"/>
+        {%endif%}
+        <ul>
+            <li>Nisn: {{ nisn }}</li>
+            <li>Nama: {{ nama }}</li>
+            <li>Email: {{ email }}</li>
+            <li>Tanggal Lahir: {{ tanggal_lahir }}</li>
+            <li>Asal Sekolah: {{ asal_sekolah }}</li>
+            <li>Prodi: {{ prodi }}</li>
+        </ul>
+    </div>
+    {%endif%}
+    <form action="/registrasi" method="post" enctype="multipart/form-data">
+        <div class="form group">
+            <label for="nisn">NISN</label>
+            <input type="text" class="form-control" name="nisn">
+        </div>
+        <div class="form group">
+            <label for="nama">Nama</label>
+            <input type="text" class="form-control" name="nama">
+        </div>
+        <div class="form group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label for="tanggal_lahir">Tanggal Lahir</label>
+            <input type="date" class="form-control" name="tanggal_lahir">
+        </div>
+        <div class="form group">
+            <label for="asal_sekolah">Asal Sekolah</label>
+            <input type="text" class="form-control" name="asal_sekolah">
+        </div>
+        <div class="form group">
+        <label for="pilih_prodi">Prodi yang dpilih : </label>
+        <select class="form-select" aria-label="Default select example" name="prodi">
+            <option selected>Pilih Program Studi</option>
+            <option value="Informatika">Informatika</option>
+            <option value="Sistem Informasi">Sistem Informasi</option>
+            <option value="Teknik Elektro">Teknik Elektro</option>
+        </select>
+        </div>
+        <div class="row mt-3">
+            <div class="form-group col">
+                <label for="foto">Foto</label>
+                <input type="file" name="foto"class="form-control">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Kirim</button>
+    </form>
+{% endblock %}
